@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Main {
+    static int[] tablica = new int[52];
+
+    static void randomNumbers() {
+        for (int i = 0; i < 50; i++) {
+            int randomNum = (int) (Math.random() * 100 + 1);
+            tablica[i] = randomNum;
+        }
+    }
+
+    static void searchForUserNumber(int userNumber) {
+        tablica[51] = userNumber;
+
+        for (int i = 0; i < 50; i++){
+            if (tablica[i] != tablica[51]){
+                System.out.println(" nie znaleziono " + userNumber);
+                break;
+            }else {
+                System.out.println("znaleziono " + userNumber + "na indexie " + tablica[i]);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("podaj szukaną: ");
+        int userNumber = sc.nextInt();
+        tablica[51] = userNumber;
+
+        randomNumbers();
+        searchForUserNumber(userNumber);
+
+        for (int i = 0; i < 50; i++){
+            System.out.println(tablica[i]);
+        }
+    }
+}
